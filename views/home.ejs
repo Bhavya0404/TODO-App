@@ -1,0 +1,109 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css
+    "
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <form >
+    <div class="container">
+      <div class="card text-center">
+        <div class="card-header">
+          <h1>TODO App</h1>
+        </div>
+       
+          <div class="mb-2">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Description</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name = "task"
+              id="exampleFormControlInput1"
+              placeholder="What do you need to do?"
+            />
+          </div>
+          <hr />
+          <section>
+            <div class="input-group mb-2 option">
+              
+              <select name="tags" class="drop">
+                <option value="null" disabled selected>Select Tag</option>
+                <option value="School">School</option>
+                <option value="Work">Work</option>
+                <option value="Priority">Priority</option>
+              </select>
+            </div>
+            <div class="date">
+              <input
+                type="date"
+                name = "date"
+                class="form-control"
+                aria-label="Text input with dropdown button"
+              />
+            </div>
+          </section>
+          <hr />
+          
+          <section id="buttons" class="mb-1">
+           
+            <button type="submit" formaction="/create-task" formmethod="post" class="btn btn-primary btn-lg">
+              ADD TASKS
+            </button>
+           
+            <button type="submit" formaction="/delete-task" formmethod="get" class="btn btn-secondary btn-lg">
+              DELETE TASKS
+            </button>
+          </section>
+        
+        <hr />
+        <% for (let i of tasks) { %>
+        <section>
+          
+          <div id="data-field">
+            
+            <div  class="input-group ">
+              <!-- <div > -->
+                
+                <div class="input-group-text">
+                  <!-- <input type="hidden" name="id" value= "<%=  i._id %>"> -->
+                  <input type="checkbox" name="id" value="<%=  i._id %>" id="" />
+                </div>
+                <div class="data">
+                  <div class="text">
+                    <p><%= i.task  %></p>
+                    <p id="date"><%= i.date %></p>
+                  </div>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic mixed styles example"
+                  >
+                    <button type="button" class="btn btn-danger" id="<%= i.tags  %>"><%= i.tags  %></button>
+                  </div> 
+              <!-- </div> -->
+              </div>
+                
+          </div>
+
+          <% } %>
+          
+
+          
+        </section>
+      </form>
+        <div class="card-footer text-muted">Made by Bhavya</div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js
+    "></script>
+  </body>
+</html>
